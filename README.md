@@ -4,7 +4,7 @@ A good example would be a maintenance module, like AutomaticMaintenance, which r
 
 ## Locking
 
-To *lock* a host, use one of the following functions:
+To *lock* a resource (a network host or file), use one of the following functions:
 * `Lock-HostResource` - to put a lock on a network host. You can choose the type of a lock: `Generic` or `Host` (see below).
 * `Lock-FileResource` - to put a lock on a fileserver where some file, with which you'd like to work, resides. No need to provide server's name separately - just pass a link to the file and let the function to do its job. Results in a lock of the `File` type.
 * `Lock-Resource` - the other two functions use this one to actually put a lock in place. It provides additional advanced parameters which aren't really needed for day-to-day operations.
@@ -26,7 +26,8 @@ There are several sections in a lock file:
 When you create a lock, a unique session ID is generated. This ID then used for *all* locks in the dependency tree, which makes troubleshooting easier.
 
 ### Unlocking
-To *unlock* a resource (a network host or a file) use `Unlock-Resource` function. You must pass a lock object to it, which it will process and, as a result of this, the lock will be moved to *the archive*. Right now, the archive is a folder inside the `ResourceLocks` folder called `History`.
+To *unlock* a resource, use `Unlock-Resource` function. You must pass a lock object to it, which it will process and, as the result of this, the lock will be moved into *the archive* and a new section of the lock file, UnlockedAt, will be filled with the current time in ticks.
+Right now, the archive is a folder inside the `ResourceLocks` folder called `History`.
 
 ## Host dependencies
 The module supports a dependencies map, which defines dependencies between network hosts. In a `ResourceLocker-Dependencies.json` file you can define for each host, which hosts depend on it. Then, when you lock the dependent, hosts, on which it depends, will be automatically locked as well.
