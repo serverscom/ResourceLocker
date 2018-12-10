@@ -26,7 +26,8 @@ There are several sections in a lock file:
 When you create a lock, a unique session ID is generated. This ID then used for *all* locks in the dependency tree, which makes troubleshooting easier.
 
 ### Unlocking
-To *unlock* a resource, use `Unlock-Resource` function. You must pass a lock object to it, which it will process and, as a result of this, the lock will be moved to *the archive*. Right now, the archive is a folder inside the `ResourceLocks` folder called `History`.
+To *unlock* a resource, use `Unlock-Resource` function. You must pass a lock object to it, which it will process and, as the result of this, the lock will be moved into *the archive* and a new section of the lock file, UnlockedAt, will be filled with the current time in ticks.
+Right now, the archive is a folder inside the `ResourceLocks` folder called `History`.
 
 ## Host dependencies
 The module supports a dependencies map, which defines dependencies between network hosts. In a `ResourceLocker-Dependencies.json` file you can define for each host, which hosts depend on it. Then, when you lock the dependent, hosts, on which it depends, will be automatically locked as well.
