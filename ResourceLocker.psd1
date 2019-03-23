@@ -6,6 +6,7 @@
     CompanyName       = 'Fozzy Inc.'
     Copyright         = '(c) 2018 Fozzy Inc. All rights reserved.'
     PowerShellVersion = '3.0'
+    Description = 'A network host synchronization framework that helps to prevent unexpected downtime during maintenance.'
     FunctionsToExport = @(
         'Get-ResourceDependence'
         'Get-ResourceLockId'
@@ -17,4 +18,12 @@
     )
     CmdletsToExport   = @()
     AliasesToExport   = @()
+    PrivateData       = @{
+        PSData = @{
+            Tags         = @()
+            LicenseUri   = 'https://github.com/FozzyHosting/ResourceLocker/blob/master/LICENSE'
+            ProjectUri   = 'https://github.com/FozzyHosting/ResourceLocker/'
+            ReleaseNotes = ''    
+        }  
+    }
 }
